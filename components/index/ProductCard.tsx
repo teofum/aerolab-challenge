@@ -8,10 +8,13 @@ import Product from '../../types/Product';
 import PointsIcon from './PointsIcon';
 
 interface ProductCardProps {
-  product: Product
+  product: Product,
+  available: number
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, available }: ProductCardProps) => {
+  const canAfford = product.cost <= available;
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -32,7 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
       </div>
 
-      <button className={styles.cta}>
+      <button className={styles.cta} disabled={!canAfford}>
         <span>Redeem for</span>
         <PointsIcon />
         <span>{product.cost}</span>

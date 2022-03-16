@@ -1,17 +1,18 @@
 import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import cn from 'classnames';
+
+import Products from '../components/index/Products';
 
 import styles from '../styles/Home.module.css';
 import typeStyles from '../styles/Type.module.css';
 
 import Product from '../types/Product';
-import ProductCard from '../components/index/ProductCard';
+import User from '../types/User';
 
 type HomeProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-const Home = ({ products }: HomeProps) => {
+const Home = ({ products, user }: HomeProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,17 +20,7 @@ const Home = ({ products }: HomeProps) => {
         <link rel="icon" href="/favicon.svg" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={typeStyles.titleL2}>
-          <em>Tech</em> products
-        </h1>
-
-        <div className={styles.grid}>
-          {products.map(product => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </div>
-      </main>
+      <Products products={products} available={user.points} />
 
       <footer className={styles.footer}>
         <a
@@ -50,17 +41,26 @@ const Home = ({ products }: HomeProps) => {
 const auth = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjMwZjNjZjE4NjFhMTAwMjExZmQyMGYiLCJpYXQiOjE2NDczNzUzMTF9.Cwl0RXO993rJYnpghxxhdbOUnHOh0J_sx42YyljpSq0';
 
 export const getServerSideProps = async () => {
-  const res = await fetch('https://coding-challenge-api.aerolab.co/products', {
+  const resProducts = await fetch('https://coding-challenge-api.aerolab.co/products', {
     method: 'GET',
     headers: {
       Authorization: auth
     }
   });
-  const products: Product[] = await res.json();
+  const products: Product[] = await resProducts.json();
+
+  const resUser = await fetch('https://coding-challenge-api.aerolab.co/user/me', {
+    method: 'GET',
+    headers: {
+      Authorization: auth
+    }
+  });
+  const user: User = await resUser.json();
 
   return {
     props: {
-      products
+      products,
+      user
     }
   };
 }

@@ -47,3 +47,14 @@ button.cta {
 button.cta:hover {
   background: var(--brand-g-hv);
 }
+
+button.cta:disabled {
+  background: var(--n200);
+  color: var(--n600);
+
+  pointer-events: none;
+}
+
+button.cta:disabled > svg {
+  color: var(--n500);
+}
