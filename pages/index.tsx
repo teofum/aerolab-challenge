@@ -55,13 +55,6 @@ const Home = ({ products }: HomeProps) => {
   };
 
   const redeemProduct = async (product: Product) => {
-    /* Pre-deduct cost of product, so you can't try to redeem more than you can
-     * afford by clicking very fast */
-    if (user) setUser({
-      ...user,
-      points: user.points - product.cost
-    });
-
     await fetch('https://coding-challenge-api.aerolab.co/redeem', {
       method: 'POST',
       headers: {

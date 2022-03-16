@@ -40,7 +40,8 @@ const PointsCounter = ({ user, addPoints, loading }: PointsCounterProps) => {
 
       {expanded &&
         <div className={styles.aeropay}>
-          <Aeropay user={user} addPoints={addPoints} loading={loading} />
+          <Aeropay user={user} addPoints={addPoints}
+            loading={loading} close={() => setExpanded(false)} />
         </div>}
     </div>
   );

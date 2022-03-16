@@ -1,8 +1,9 @@
-
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 
 import PointsIcon from './PointsIcon';
+import LoadingAnim from './LoadingAnim';
 
 import styles from '../../styles/ProductCard.module.css';
 import typeStyles from '../../styles/Type.module.css';
@@ -19,6 +20,11 @@ interface ProductCardProps {
 const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
   const canAfford = product.cost <= (available || 0);
   const loading = available === undefined;
+
+  const [redeeming, setRedeeming] = useState(false);
+  useEffect(() => {
+    setRedeeming(false);
+  }, [available]);
 
   return (
     <div className={styles.container}>
@@ -46,10 +52,14 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
       {loading && <div className={utilStyles.ctaSkeleton} />}
       {!loading &&
         <button className={cn(utilStyles.cta, utilStyles.elevation1, utilStyles.hv)}
-          disabled={!canAfford} onClick={() => redeem(product)}>
-          <span>{canAfford ? 'Redeem for' : 'You need'}</span>
-          <PointsIcon />
-          <span>{product.cost.toLocaleString('en-US')}</span>
+          disabled={!canAfford || redeeming} onClick={() => {
+            redeem(product);
+            setRedeeming(true);
+          }}>
+          {!redeeming && <span>{canAfford ? 'Redeem for' : 'You need'}</span>}
+          {!redeeming && <PointsIcon />}
+          {!redeeming && <span>{product.cost.toLocaleString('en-US')}</span>}
+          {redeeming && <LoadingAnim />}
         </button>}
     </div>
   )
