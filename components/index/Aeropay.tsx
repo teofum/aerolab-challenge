@@ -11,6 +11,7 @@ import User from '../../types/User';
 import styles from '../../styles/Aeropay.module.css';
 import typeStyles from '../../styles/Type.module.css';
 import utilStyles from '../../styles/Utils.module.css';
+import Aerocard from './Aerocard';
 
 interface AeropayProps {
   user: User | null;
@@ -41,7 +42,9 @@ const Aeropay = ({ user, addPoints, loading, close }: AeropayProps) => {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.cardPlaceholder}>Aerocard</div>
+        <div className={styles.aerocard}>
+          <Aerocard user={user} />
+        </div>
 
         <ButtonSelect id={'points-select'}
           options={pointsOptions} selected={points} set={setPoints} small />

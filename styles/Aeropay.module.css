@@ -41,12 +41,6 @@ button.close > svg {
   gap: 1.5rem;
 }
 
-.cardPlaceholder {
-  width: 264px;
-  height: 148px;
-  border-radius: var(--radius-sm);
-  background: var(--n900);
-  color: var(--n0);
-  padding: 2rem;
+.aerocard {
   margin-bottom: 1rem;
 }
