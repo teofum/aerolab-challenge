@@ -2,6 +2,7 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import PointsCounter from '../components/index/PointsCounter';
 
 import Products from '../components/index/Products';
 
@@ -65,7 +66,7 @@ const Home = ({ products }: HomeProps) => {
       <header className={styles.header}>
         <Image src='/icons/aerolab-logo-1.svg' width={126} height={48} />
 
-        <div>{user?.points}</div>
+        <PointsCounter points={user?.points} add={() => {}} />
       </header>
 
       <Products products={products} available={user?.points || 0} redeem={redeemProduct} />

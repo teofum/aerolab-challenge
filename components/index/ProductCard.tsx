@@ -1,12 +1,13 @@
+
 import Image from 'next/image';
 import cn from 'classnames';
+
+import PointsIcon from './PointsIcon';
 
 import styles from '../../styles/ProductCard.module.css';
 import typeStyles from '../../styles/Type.module.css';
 
 import Product from '../../types/Product';
-import PointsIcon from './PointsIcon';
-import { useState } from 'react';
 
 interface ProductCardProps {
   product: Product,
@@ -15,8 +16,6 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   const canAfford = product.cost <= available;
 
   return (
@@ -25,7 +24,7 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
         <div className={styles.productImage}>
 
           <Image src='/icons/placeholder.svg' width={96} height={96} />
-          
+
           {/* We can ignore the "standard" definition image, since its size
             is smaller than the display size (252 vs 280px) it will -always-
             look blurry. We're better off letting Next optimize for us instead */}
