@@ -8,11 +8,11 @@ import styles from '../../styles/Products.module.css';
 import typeStyles from '../../styles/Type.module.css';
 
 import Product from "../../types/Product";
-import ButtonSelect from "./ButtonRadio";
+import ButtonSelect from "./ButtonSelect";
 
 interface ProductsProps {
   products: Product[],
-  available: number,
+  available?: number,
   redeem: (product: Product) => void
 }
 

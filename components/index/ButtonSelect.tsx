@@ -1,6 +1,6 @@
 import cn from "classnames";
 
-import styles from '../../styles/ButtonRadio.module.css';
+import styles from '../../styles/ButtonSelect.module.css';
 import typeStyles from '../../styles/Type.module.css';
 
 interface ButtonSelectProps {
@@ -8,17 +8,19 @@ interface ButtonSelectProps {
   selected: string;
   set: (opt: string) => void;
   id: string;
+  small?: boolean;
 }
 
-const ButtonSelect = ({ options, selected, set, id }: ButtonSelectProps) => {
+const ButtonSelect = ({ options, selected, set, id, small }: ButtonSelectProps) => {
   return (
-    <div id={id} className={styles.main}>
+    <div id={id} className={cn(styles.main, { [styles.small]: small })}>
       {options.map((opt, i) => (
         <button key={i}
           className={cn(
             styles.option,
             {
               [styles.selected]: opt.value === selected,
+              [styles.small]: small,
               [typeStyles.em]: opt.value !== selected
             }
           )}

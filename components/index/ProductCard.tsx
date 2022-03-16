@@ -6,21 +6,23 @@ import PointsIcon from './PointsIcon';
 
 import styles from '../../styles/ProductCard.module.css';
 import typeStyles from '../../styles/Type.module.css';
+import utilStyles from '../../styles/Utils.module.css';
 
 import Product from '../../types/Product';
 
 interface ProductCardProps {
   product: Product,
-  available: number,
+  available?: number,
   redeem: (product: Product) => void
 }
 
 const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
-  const canAfford = product.cost <= available;
+  const canAfford = product.cost <= (available || 0);
+  const loading = available === undefined;
 
   return (
     <div className={styles.container}>
-      <div className={styles.card}>
+      <div className={cn(styles.card, utilStyles.elevation1)}>
         <div className={styles.productImage}>
 
           <Image src='/icons/placeholder.svg' width={96} height={96} />
@@ -41,12 +43,14 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
         </div>
       </div>
 
-      <button className={styles.cta} disabled={!canAfford}
-        onClick={() => redeem(product)}>
-        <span>{canAfford ? 'Redeem for' : 'You need'}</span>
-        <PointsIcon />
-        <span>{product.cost}</span>
-      </button>
+      {loading && <div className={utilStyles.ctaSkeleton} />}
+      {!loading &&
+        <button className={cn(utilStyles.cta, utilStyles.elevation1, utilStyles.hv)}
+          disabled={!canAfford} onClick={() => redeem(product)}>
+          <span>{canAfford ? 'Redeem for' : 'You need'}</span>
+          <PointsIcon />
+          <span>{product.cost.toLocaleString('en-US')}</span>
+        </button>}
     </div>
   )
 }

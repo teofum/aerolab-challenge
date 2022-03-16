@@ -8,6 +8,8 @@
   background: var(--n0);
   border: 1px solid var(--n300);
   border-radius: var(--radius);
+
+  position: relative;
 }
 
 .counter {
@@ -18,7 +20,7 @@
 }
 
 button.expand {
-  padding: 0.5rem;
+  padding: 0.25rem;
   display: grid;
 
   background: none;
@@ -39,4 +41,11 @@ button.expand.expanded {
 
 button.expand > svg {
   stroke: currentColor;
+}
+
+.aeropay {
+  position: absolute;
+
+  top: calc(100% + 0.375rem);
+  right: 0;
 }

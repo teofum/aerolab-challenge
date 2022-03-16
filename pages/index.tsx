@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -16,6 +17,7 @@ type HomeProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const Home = ({ products }: HomeProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loadingPoints, setLoadingPoints] = useState(false);
 
   useEffect(() => {
     refreshUser();
@@ -34,6 +36,24 @@ const Home = ({ products }: HomeProps) => {
     if (user) setUser(user);
   };
 
+  const addPoints = async (amt: number) => {
+    setLoadingPoints(true);
+
+    await fetch('https://coding-challenge-api.aerolab.co/user/points', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: auth
+      },
+      body: JSON.stringify({
+        amount: amt
+      })
+    });
+
+    setLoadingPoints(false);
+    refreshUser();
+  };
+
   const redeemProduct = async (product: Product) => {
     /* Pre-deduct cost of product, so you can't try to redeem more than you can
      * afford by clicking very fast */
@@ -42,7 +62,7 @@ const Home = ({ products }: HomeProps) => {
       points: user.points - product.cost
     });
 
-    const res = await fetch('https://coding-challenge-api.aerolab.co/redeem', {
+    await fetch('https://coding-challenge-api.aerolab.co/redeem', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,20 +86,20 @@ const Home = ({ products }: HomeProps) => {
       <header className={styles.header}>
         <Image src='/icons/aerolab-logo-1.svg' width={126} height={48} />
 
-        <PointsCounter points={user?.points} add={() => {}} />
+        <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
       </header>
 
-      <Products products={products} available={user?.points || 0} redeem={redeemProduct} />
+      <Products products={products} available={user?.points} redeem={redeemProduct} />
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+      <footer className={cn(styles.footer, typeStyles.light)}>
+        <a href="https://github.com/teofum/aerolab-challenge"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          View repository on&nbsp;
           <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+            {/* TODO change logo to github */}
+            <Image src="/vercel.svg" alt="Vercel Logo" width={24} height={24} />
           </span>
         </a>
       </footer>

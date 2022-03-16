@@ -1,0 +1,32 @@
+.main {
+  height: 1.5em;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  background-color: currentColor;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+
+  animation: anim 1500ms ease 0ms infinite normal both;
+}
+
+@keyframes anim {
+  0% {
+    transform: translateY(0);
+  }
+  12.5% {
+    transform: translateY(-150%);
+  }
+  25% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

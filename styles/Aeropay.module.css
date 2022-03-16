@@ -1,0 +1,52 @@
+.main {  
+  background: var(--n0);
+  border: 1px solid var(--n300);
+  border-radius: var(--radius);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+
+  white-space: nowrap;
+  border-bottom: 1px solid var(--n300);
+}
+
+button.close {
+  padding: 0;
+  display: grid;
+
+  background: none;
+  color: var(--n500);
+  border: none;
+
+  transition: color 150ms ease-out, transform 150ms ease-out;
+  cursor: pointer;
+}
+
+button.close:active {
+  color: var(--n600);
+}
+
+button.close > svg {
+  stroke: currentColor;
+}
+
+.content {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.cardPlaceholder {
+  width: 264px;
+  height: 148px;
+  border-radius: var(--radius-sm);
+  background: var(--n900);
+  color: var(--n0);
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
