@@ -8,6 +8,7 @@ import styles from '../../styles/Products.module.css';
 import typeStyles from '../../styles/Type.module.css';
 
 import Product from "../../types/Product";
+import ButtonSelect from "./ButtonRadio";
 
 interface ProductsProps {
   products: Product[],
@@ -16,15 +17,29 @@ interface ProductsProps {
 
 const PAGE_SIZE = 16;
 
+const sortFunctions: { [key: string]: (a: Product, b: Product) => number } = {
+  recent: (a, b) => 0, /* There's no date in the API model, assume already sorted */
+  low: (a, b) => a.cost - b.cost,
+  high: (a, b) => b.cost - a.cost
+}
+
 const Products = ({ products, available }: ProductsProps) => {
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState('');
+  const [sort, setSort] = useState('recent');
 
   const categories = new Set<string>(products
     .map(product => product.category));
 
+  const sortOptions = [
+    { name: 'Most Recent', value: 'recent' },
+    { name: 'Lowest Price', value: 'low' },
+    { name: 'Highest Price', value: 'high' }
+  ];
+
   const filtered = products
     .filter(product => !filter || product.category === filter);
+
   const pageCount = Math.ceil(filtered.length / PAGE_SIZE);
 
   return (
@@ -49,12 +64,22 @@ const Products = ({ products, available }: ProductsProps) => {
               </select>
             </div>
           </div>
+
+          <hr className={styles.divider} />
+
+          <div className={styles.sort}>
+            <label htmlFor='sort-radio'>Sort by:</label>
+            <ButtonSelect options={sortOptions} selected={sort} set={setSort}
+              id='sort-radio' />
+          </div>
         </div>
         <Paginator page={page} total={pageCount} set={setPage} />
       </div>
 
       <div className={styles.grid}>
-        {filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+        {filtered
+          .sort(sortFunctions[sort])
+          .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
           .map(product => (
             <ProductCard key={product._id}
               product={product} available={available} />

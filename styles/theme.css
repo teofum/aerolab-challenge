@@ -23,5 +23,6 @@
 
   /* == Other theme variables =============================================== */
   --radius: 1rem;
+  --radius-md: 0.75rem;
   --radius-sm: 0.5rem;
 }

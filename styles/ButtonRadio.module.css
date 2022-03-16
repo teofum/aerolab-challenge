@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
+button.option {
+  background: var(--brand-light);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1.5rem;
+}
+
+button.option.selected {
+  background: var(--brand-g);
+  color: var(--n0);
+}
