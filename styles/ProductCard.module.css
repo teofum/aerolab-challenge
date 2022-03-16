@@ -22,6 +22,11 @@
 .productImage {
   display: grid;
   place-items: center;
+  grid-template-areas: "image";
+}
+
+.productImage > * {
+  grid-area: image;
 }
 
 .productInfo {

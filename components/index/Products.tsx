@@ -12,7 +12,8 @@ import ButtonSelect from "./ButtonRadio";
 
 interface ProductsProps {
   products: Product[],
-  available: number
+  available: number,
+  redeem: (product: Product) => void
 }
 
 const PAGE_SIZE = 16;
@@ -23,7 +24,7 @@ const sortFunctions: { [key: string]: (a: Product, b: Product) => number } = {
   high: (a, b) => b.cost - a.cost
 }
 
-const Products = ({ products, available }: ProductsProps) => {
+const Products = ({ products, available, redeem }: ProductsProps) => {
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('recent');
@@ -82,7 +83,7 @@ const Products = ({ products, available }: ProductsProps) => {
           .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
           .map(product => (
             <ProductCard key={product._id}
-              product={product} available={available} />
+              product={product} available={available} redeem={redeem} />
           ))}
       </div>
 

@@ -10,6 +10,8 @@
 
   /* Tabular numerals, prevents paginator size shifting on page change */
   font-feature-settings: 'tnum';
+
+  justify-self: end;
 }
 
 button.page {
