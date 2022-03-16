@@ -1,0 +1,26 @@
+:root {
+  /* == Color palette definitions =========================================== */
+  /* Neutrals */
+  --n900: #252f3d;
+  --n600: #7c899c;
+  --n500: #8fa3bf;
+  --n300: #dae4f2;
+  --n200: #e6edf7;
+  --n100: #f5f9ff;
+  --n0: #ffffff;
+
+  /* Brand */
+  --brand: #176feb;
+  --brand-end: #ff80ff;
+  --brand-hv: #1667d9;
+  --brand-hv-end: #f279f2;
+  --brand-light: #e5f0ff;
+  --brand-light-2: #cce1ff;
+
+  /* Brand gradients */
+  --brand-g: linear-gradient(110deg, var(--brand), var(--brand-end));
+  --brand-g-hv: linear-gradient(110deg, var(--brand-hv), var(--brand-hv-end));
+
+  /* == Other theme variables =============================================== */
+  --radius: 1rem;
+}

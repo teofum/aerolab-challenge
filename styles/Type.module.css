@@ -1,0 +1,65 @@
+.titleL1,
+.titleL2,
+.titleL3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  
+  /* Gradient background for em color effect */
+  background: var(--brand-g);
+  background-clip: text;
+}
+
+.titleL1 {
+  font-size: 12.5rem; /* 200px @ default 16px font size */
+  line-height: 0.8;
+}
+
+.titleL2 {
+  font-size: 3rem; /* 48px @ default 16px font size */
+  line-height: 0.8;
+}
+
+.titleL3 {
+  font-size: 2rem; /* 32px @ default 16px font size */
+  line-height: 1;
+}
+
+.titleL1 em,
+.titleL2 em,
+.titleL3 em {
+  color: transparent;
+  font-style: normal;
+}
+
+/* Fallback, just in case someone shows up with an ancient browser */
+@supports not (background-clip: text) {
+  .title {
+    background: none;
+  }
+
+  .title em {
+    color: var(--brand);
+  }
+}
+
+.allCaps {
+  letter-spacing: 24%;
+  text-transform: uppercase;
+}
+
+.lightWeight {
+  font-weight: 500;
+}
+
+.textL2 {
+  font-size: 0.875rem; /* 14px @ default 16px font size */
+}
+
+.textL2.allCaps {
+  letter-spacing: 5%;
+  text-transform: uppercase;
+}
+
+.light {
+  color: var(--n600);
+}
