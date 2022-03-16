@@ -12,3 +12,20 @@
   row-gap: 5rem;
   place-items: stretch;
 }
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.pagination {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  justify-items: end;
+}
+
+.pageSize {
+  grid-column: 2;
+  justify-self: center;
+}

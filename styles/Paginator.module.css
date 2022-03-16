@@ -1,0 +1,41 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--n300);
+  border-radius: var(--radius);
+
+  /* Tabular numerals, prevents paginator size shifting on page change */
+  font-feature-settings: 'tnum';
+}
+
+button.page {
+  padding: 0.5rem;
+  display: grid;
+
+  background: var(--brand-light);
+  color: var(--n500);
+  border: none;
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+button.page:active {
+  color: var(--n600);
+}
+
+button.page:disabled {
+  pointer-events: none;
+
+  background: var(--n200);
+  color: var(--n300);
+}
+
+button.page > svg {
+  stroke: currentColor;
+}

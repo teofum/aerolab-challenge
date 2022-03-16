@@ -36,7 +36,7 @@ const ProductCard = ({ product, available }: ProductCardProps) => {
       </div>
 
       <button className={styles.cta} disabled={!canAfford}>
-        <span>Redeem for</span>
+        <span>{canAfford ? 'Redeem for' : 'You need'}</span>
         <PointsIcon />
         <span>{product.cost}</span>
       </button>

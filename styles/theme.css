@@ -23,4 +23,5 @@
 
   /* == Other theme variables =============================================== */
   --radius: 1rem;
+  --radius-sm: 0.5rem;
 }

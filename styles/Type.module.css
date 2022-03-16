@@ -26,9 +26,16 @@
 
 .titleL1 em,
 .titleL2 em,
-.titleL3 em {
+.titleL3 em,
+.em em {
   color: transparent;
   font-style: normal;
+}
+
+.em em {
+  /* Gradient background for em color effect */
+  background: var(--brand-g);
+  background-clip: text;
 }
 
 /* Fallback, just in case someone shows up with an ancient browser */
