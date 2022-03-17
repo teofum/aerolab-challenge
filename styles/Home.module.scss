@@ -2,10 +2,6 @@
 
 .container {
   padding: 0 1.25rem;
-
-  @include respond-up('desktop') {
-    padding: 0 5rem;
-  }
 }
 
 .container > * {
@@ -41,4 +37,23 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.logoDesktop {
+  display: none;
+}
+
+/* === Desktop styles ======================================================= */
+@include respond-up('desktop') {
+  .container {
+    padding: 0 5rem;
+  }
+
+  .logoDesktop {
+    display: block;
+  }
+
+  .logoMobile {
+    display: none;
+  }
 }

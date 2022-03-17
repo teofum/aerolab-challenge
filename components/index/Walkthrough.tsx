@@ -1,14 +1,7 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 
-import ButtonSelect from './ButtonSelect';
-import PointsIcon from './PointsIcon';
-import LoadingAnim from './LoadingAnim';
-
-import User from '../../types/User';
-
-import styles from '../../styles/Walkthrough.module.css';
+import styles from '../../styles/Walkthrough.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
@@ -27,8 +20,13 @@ const Walkthrough = () => {
 
   return (
     <div className={styles.main}>
+      <img className={styles.illustration}
+        src='/illustrations/hero-responsive.png'
+        srcSet='/illustrations/hero-responsive.png 1x, /illustrations/hero-desktop.png 2x' />
+
       {[0, 1, 2].map(i => (
-        <div key={i} className={styles.card} style={{ '--n': i - 1 } as any}>
+        <div key={i} className={cn(styles.card, utilStyles.elevation2)}
+          style={{ '--n': i - 1 } as any}>
           <div className={styles.cardTop}>
             <Image src={`/illustrations/wt-${i + 1}-desktop.png`}
               width={508} height={498} />

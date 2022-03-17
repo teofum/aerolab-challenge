@@ -1,0 +1,153 @@
+@import './breakpoints.scss';
+
+.main {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+
+  padding: 125vw 0 2rem;
+}
+
+.main::before {
+  content: '';
+
+  /* Hacky full width background without breaking the grid */
+  position: absolute;
+  top: 90px;
+  height: calc(100% - 90px);
+  left: calc(50% - 50vw);
+  width: 100vw;
+
+  background: var(--brand-g);
+  opacity: 50%;
+  z-index: -1;
+}
+
+.illustration {
+  position: absolute;
+  top: -10vw;
+  left: 50%;
+  width: 100vw;
+  height: 150vw;
+  object-fit: cover;
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--n300);
+  border-radius: var(--radius-xl);
+
+  display: grid;
+
+  padding: 0.75rem;
+  z-index: 1;
+}
+
+.cardTop {
+  background: var(--illus-g);
+  border: 1px solid var(--n300);
+  border-bottom: none;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+
+  display: grid;
+}
+
+.cardTop img {
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.cardBottom {
+  background: var(--n0);
+  border: 1px solid var(--n300);
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+
+  padding: 1rem 1.5rem 1.5rem;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  row-gap: 0.75rem;
+  align-items: center;
+  justify-items: start;
+}
+
+.cardBottom > p {
+  grid-column: span 2;
+  max-width: 370px;
+}
+
+.cardIcon {
+  background: var(--brand-light);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem;
+
+  display: grid;
+}
+
+
+/* === Tablet styles ======================================================= */
+@include respond-up('tablet') {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+
+    padding-top: 470px;
+  }
+
+  .main::before {
+    top: 320px;
+    height: calc(100% - 320px);
+  }
+
+  .illustration {
+    top: 0;
+    width: 580px;
+    height: 520px;
+    object-fit: contain;
+  }
+}
+
+/* === Desktop styles ======================================================= */
+@include respond-up('desktop') {
+  .main {
+    height: 720px;
+    padding-top: 2rem;
+  }
+
+  .main::before {
+    top: 120px;
+    height: 528px;
+  }
+
+  .illustration {
+    display: none;
+  }
+
+  .card {
+    background: var(--n0);
+    max-width: 37%;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform:
+      translateX(-50%)
+      translateY(calc(2rem * var(--n) * var(--n)))
+      translateX(calc(85% * var(--n)))
+      rotateZ(calc(3deg * var(--n)));
+  }
+
+  .cardIcon {
+    padding: 0.5rem;
+  }
+}

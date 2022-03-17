@@ -79,7 +79,10 @@ const Home = ({ products }: HomeProps) => {
       </Head>
 
       <header className={styles.header}>
-        <Image src='/icons/aerolab-logo-1.svg' width={126} height={48} />
+        <img className={styles.logoMobile}
+          src='/icons/aerolab-logo-2.svg' width={48} height={48} />
+        <img className={styles.logoDesktop}
+          src='/icons/aerolab-logo-1.svg' width={126} height={48} />
         <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
       </header>
 
