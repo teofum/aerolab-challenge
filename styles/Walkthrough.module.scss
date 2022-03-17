@@ -131,6 +131,26 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem;
   }
+
+  .card {
+    max-width: 400px;
+    opacity: 0;
+  }
+  
+  .card.visible {
+    animation: showCard 500ms ease-out calc(var(--n) * 150ms) 1 normal both;
+  }
+
+  @keyframes showCard {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 /* === Desktop styles ======================================================= */
@@ -156,11 +176,17 @@
     position: absolute;
     top: 0;
     left: 50%;
+    transform-origin: bottom;
     transform:
       translateX(-50%)
       translateY(calc(2rem * var(--n) * var(--n)))
       translateX(calc(85% * var(--n)))
       rotateZ(calc(3deg * var(--n)));
+  }
+  
+  .card.visible {
+    animation-duration: 750ms;
+    animation-delay: calc(250ms * var(--n));
   }
 
   .cardIcon {
@@ -170,5 +196,24 @@
   .cardIcon > img {
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  @keyframes showCard {
+    0% {
+      opacity: 0;
+      transform:
+        translateX(-50%)
+        translateY(calc(2rem * var(--n) * var(--n)))
+        translateX(calc(85% * var(--n) + 50%))
+        rotateZ(calc(3deg * var(--n) + 5deg));
+    }
+    100% {
+      opacity: 1;
+      transform:
+        translateX(-50%)
+        translateY(calc(2rem * var(--n) * var(--n)))
+        translateX(calc(85% * var(--n)))
+        rotateZ(calc(3deg * var(--n)));
+    }
   }
 }
