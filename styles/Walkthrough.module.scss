@@ -8,7 +8,7 @@
   align-items: stretch;
   gap: 1.5rem;
 
-  padding: 125vw 0 2rem;
+  padding: min(125vw, 500px) 0 2rem;
 }
 
 .main::before {
@@ -32,6 +32,8 @@
   left: 50%;
   width: 100vw;
   height: 150vw;
+  max-width: 585px;
+  max-height: 585px;
   object-fit: cover;
   transform: translateX(-50%);
 
@@ -93,14 +95,16 @@
   display: grid;
 }
 
+.cardIcon > img {
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
 
 /* === Tablet styles ======================================================= */
 @include respond-up('tablet') {
   .main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.5rem;
-
+    align-items: center;
     padding-top: 470px;
   }
 
@@ -114,6 +118,18 @@
     width: 580px;
     height: 520px;
     object-fit: contain;
+  }
+
+  .card {
+    max-width: 400px;
+  }
+}
+
+@include respond-up('tablet-lg') {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
   }
 }
 
@@ -149,5 +165,10 @@
 
   .cardIcon {
     padding: 0.5rem;
+  }
+
+  .cardIcon > img {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }

@@ -37,7 +37,7 @@ button.bigCta:active > svg {
 }
 
 /* === Mobile/tablet styles ================================================= */
-@include respond-down('tablet') {
+@include respond-down('tablet-lg') {
   .title {
     max-width: 335px;
     margin: 0 auto;

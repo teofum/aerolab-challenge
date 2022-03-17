@@ -34,8 +34,7 @@ const Walkthrough = () => {
 
           <div className={styles.cardBottom}>
             <div className={styles.cardIcon}>
-              <Image src={`/icons/wt-${i + 1}.svg`}
-                width={40} height={40} />
+              <img src={`/icons/wt-${i + 1}.svg`} />
             </div>
             <span className={typeStyles.titleL3}><em>{cardTitles[i]}</em></span>
 

@@ -49,7 +49,7 @@ hr.divider {
 .sort label {
   white-space: nowrap;
 
-  @include respond-down('tablet') {
+  @include respond-down('tablet-lg') {
     display: none;
   }
 }
