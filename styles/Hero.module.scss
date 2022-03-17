@@ -52,7 +52,6 @@ button.bigCta:active > svg {
     grid-template-columns: 4fr 5fr;
     gap: 8rem;
 
-    padding-top: 5rem;
     text-align: left;
   }
 
@@ -98,5 +97,12 @@ button.bigCta:active > svg {
     border-radius: 100px;
     background: var(--brand-g);
     opacity: 50%;
+  }
+}
+
+/* === Large desktop styles ================================================= */
+@include respond-up('large') {
+  .main {
+    padding-top: 5rem;
   }
 }
