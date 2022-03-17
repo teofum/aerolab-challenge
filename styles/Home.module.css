@@ -15,10 +15,10 @@
   align-items: center;
   justify-content: space-between;
 
-  position: sticky;
+  /* position: sticky;
   top: 0;
   background: var(--n0);
-  z-index: 10;
+  z-index: 10; */
 }
 
 .footer {

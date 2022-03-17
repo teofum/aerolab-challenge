@@ -21,7 +21,14 @@
   --brand-g: linear-gradient(110deg, var(--brand), var(--brand-end));
   --brand-g-hv: linear-gradient(110deg, var(--brand-hv), var(--brand-hv-end));
 
+  /* Illustration background */
+  --illus: #7296eb;
+  --illus-end: #eac0e9;
+  --illus-g: linear-gradient(110deg, var(--illus), var(--illus-end));
+
   /* == Other theme variables =============================================== */
+  --radius-xl: 2rem;
+  --radius-lg: 1.5rem;
   --radius: 1rem;
   --radius-md: 0.75rem;
   --radius-sm: 0.5rem;

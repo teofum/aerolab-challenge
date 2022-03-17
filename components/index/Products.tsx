@@ -45,9 +45,9 @@ const Products = ({ products, available, redeem }: ProductsProps) => {
 
   return (
     <main className={styles.main}>
-      <h1 className={typeStyles.titleL2}>
+      <h2 className={typeStyles.titleL2}>
         <em>Tech</em> products
-      </h1>
+      </h2>
 
       <div className={styles.filters}>
         <div className={styles.filterSort}>

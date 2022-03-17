@@ -12,6 +12,8 @@
 .titleL1 {
   font-size: 12.5rem; /* 200px @ default 16px font size */
   line-height: 0.8;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .titleL2 {
@@ -50,7 +52,7 @@
 }
 
 .allCaps {
-  letter-spacing: 24%;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
 }
 
@@ -63,7 +65,7 @@
 }
 
 .textL2.allCaps {
-  letter-spacing: 5%;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 

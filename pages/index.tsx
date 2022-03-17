@@ -3,9 +3,11 @@ import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import PointsCounter from '../components/index/PointsCounter';
 
+import Hero from '../components/index/Hero';
+import PointsCounter from '../components/index/PointsCounter';
 import Products from '../components/index/Products';
+import Walkthrough from '../components/index/Walkthrough';
 
 import styles from '../styles/Home.module.css';
 import typeStyles from '../styles/Type.module.css';
@@ -78,9 +80,11 @@ const Home = ({ products }: HomeProps) => {
 
       <header className={styles.header}>
         <Image src='/icons/aerolab-logo-1.svg' width={126} height={48} />
-
         <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
       </header>
+
+      <Hero />
+      <Walkthrough />
 
       <Products products={products} available={user?.points} redeem={redeemProduct} />
 

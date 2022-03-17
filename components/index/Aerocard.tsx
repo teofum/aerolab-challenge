@@ -1,23 +1,14 @@
-import { useState } from 'react';
-import Image from 'next/image';
-import cn from 'classnames';
-
-import ButtonSelect from './ButtonSelect';
 import PointsIcon from './PointsIcon';
-import LoadingAnim from './LoadingAnim';
 
 import User from '../../types/User';
 
 import styles from '../../styles/Aerocard.module.css';
 import typeStyles from '../../styles/Type.module.css';
-import utilStyles from '../../styles/Utils.module.css';
 
 const Aerocard = ({ user }: { user: User | null}) => {
   return (
     <div className={styles.main}>
-      <div className={styles.waves}>
-        
-      </div>
+      <div className={styles.waves} />
 
       <div>
         <span>Aerocard</span>

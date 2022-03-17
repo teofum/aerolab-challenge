@@ -34,7 +34,7 @@ const PointsCounter = ({ user, addPoints, loading }: PointsCounterProps) => {
       <button className={cn(styles.expand, { [styles.expanded]: expanded })}
         onClick={() => setExpanded(!expanded)}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4.5 9L12 16.5L19.5 9" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="bevel" />
+          <path d="M4.5 9L12 16.5L19.5 9" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="bevel" />
         </svg>
       </button>
 
