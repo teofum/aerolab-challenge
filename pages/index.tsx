@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import Hero from '../components/index/Hero';
@@ -11,6 +10,7 @@ import Walkthrough from '../components/index/Walkthrough';
 
 import styles from '../styles/Home.module.scss';
 import typeStyles from '../styles/Type.module.scss';
+import utilStyles from '../styles/Utils.module.css';
 
 import Product from '../types/Product';
 import User from '../types/User';
@@ -19,10 +19,21 @@ type HomeProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const Home = ({ products }: HomeProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [sticky, setSticky] = useState(false);
   const [loadingPoints, setLoadingPoints] = useState(false);
 
   useEffect(() => {
     refreshUser();
+  }, []);
+  
+  useEffect(() => {
+    const handler = () => {
+      const main = document.querySelector('main');
+      setSticky((main?.getBoundingClientRect().top || 0) < 100);
+    }; 
+
+    window.addEventListener('scroll', handler);
+    return () => window.removeEventListener('scroll', handler);
   }, []);
 
   /* User data needs to be fetched client-side, since points amount can change */
@@ -77,6 +88,19 @@ const Home = ({ products }: HomeProps) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.svg" />
       </Head>
+
+      <header className={cn(
+        styles.header,
+        styles.stickyHeader,
+        utilStyles.elevation3,
+        { [styles.hidden]: !sticky }
+        )}>
+        <img className={styles.logoMobile}
+          src='/icons/aerolab-logo-2.svg' width={48} height={48} />
+        <img className={styles.logoDesktop}
+          src='/icons/aerolab-logo-1.svg' width={126} height={48} />
+        <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
+      </header>
 
       <header className={styles.header}>
         <img className={styles.logoMobile}

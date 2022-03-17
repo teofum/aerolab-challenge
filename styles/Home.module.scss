@@ -17,11 +17,24 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
 
-  /* position: sticky;
+.stickyHeader {
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 1.25rem;
+
   background: var(--n0);
-  z-index: 10; */
+  border-bottom: 1px solid var(--n300);
+
+  z-index: 10;
+  transition: transform 250ms ease-out;
+}
+
+.stickyHeader.hidden {
+  transform: translateY(-150%);
 }
 
 .footer {
@@ -62,5 +75,9 @@ img.logo {
 
   .logoMobile {
     display: none;
+  }
+
+  .floatHeader {
+    padding: 1.5rem 5rem;
   }
 }
