@@ -1,5 +1,6 @@
 .main {
   width: 264px;
+  max-width: 75vw;
   height: 148px;
   
   background: var(--n900);
