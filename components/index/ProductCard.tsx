@@ -51,7 +51,11 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
 
       {loading && <div className={utilStyles.ctaSkeleton} />}
       {!loading &&
-        <button className={cn(utilStyles.cta, utilStyles.elevation1, utilStyles.hv)}
+        <button className={cn(
+          utilStyles.cta,
+          utilStyles.elevation1,
+          utilStyles.hv,
+          { [utilStyles.ctaLoading]: redeeming })}
           disabled={!canAfford || redeeming} onClick={() => {
             redeem(product);
             setRedeeming(true);

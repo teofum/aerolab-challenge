@@ -51,7 +51,11 @@ const Aeropay = ({ user, addPoints, loading, close }: AeropayProps) => {
 
         {!user && <div className={utilStyles.ctaSkeleton} />}
         {user &&
-          <button className={cn(utilStyles.cta, utilStyles.elevation1, utilStyles.hv)}
+          <button className={cn(
+            utilStyles.cta,
+            utilStyles.elevation1,
+            utilStyles.hv,
+            { [utilStyles.ctaLoading]: loading })}
             disabled={loading} onClick={() => addPoints(parseInt(points))}>
             {!loading && <PointsIcon />}
             {!loading && <span>Add Points</span>}

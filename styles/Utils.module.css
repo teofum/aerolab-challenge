@@ -39,14 +39,20 @@ button.cta:hover {
 }
 
 button.cta:disabled {
+  pointer-events: none;
+}
+
+button.cta:disabled:not(.ctaLoading) {
   background: var(--n200);
   color: var(--n600);
-
-  pointer-events: none;
 }
 
 button.cta:disabled > svg {
   color: var(--n500);
+}
+
+.ctaLoading {
+  opacity: 0.7;
 }
 
 .ctaSkeleton {
