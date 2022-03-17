@@ -5,7 +5,7 @@ import cn from 'classnames';
 import PointsIcon from './PointsIcon';
 import LoadingAnim from './LoadingAnim';
 
-import styles from '../../styles/ProductCard.module.css';
+import styles from '../../styles/ProductCard.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
@@ -47,6 +47,11 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
             typeStyles.light
           )}>{product.category}</div>
         </div>
+
+        <span className={cn(styles.costLabel, typeStyles.em)}>
+          <img src='/icons/aeropay-1.svg' />
+          <em>{product.cost.toLocaleString('en-US')}</em>
+        </span>
       </div>
 
       {loading && <div className={utilStyles.ctaSkeleton} />}
@@ -62,7 +67,10 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
           }}>
           {!redeeming && <span>{canAfford ? 'Redeem for' : 'You need'}</span>}
           {!redeeming && <PointsIcon />}
-          {!redeeming && <span>{product.cost.toLocaleString('en-US')}</span>}
+          {!redeeming && <span>{
+            (canAfford ? product.cost : product.cost - available)
+              .toLocaleString('en-US')
+          }</span>}
           {redeeming && <LoadingAnim />}
         </button>}
     </div>

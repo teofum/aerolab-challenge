@@ -6,7 +6,7 @@ import Aeropay from './Aeropay';
 
 import User from '../../types/User';
 
-import styles from '../../styles/PointsCounter.module.css';
+import styles from '../../styles/PointsCounter.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
@@ -27,7 +27,7 @@ const PointsCounter = ({ user, addPoints, loading }: PointsCounterProps) => {
       { [utilStyles.active]: expanded }
     )}>
       <span className={cn(styles.counter, typeStyles.em)}>
-        <Image src='/icons/aeropay-1.svg' width={32} height={32} />
+        <img src='/icons/aeropay-1.svg' />
         <em>{user?.points.toLocaleString('en-US') || 0}</em>
       </span>
 

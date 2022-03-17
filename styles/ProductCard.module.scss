@@ -1,3 +1,5 @@
+@import './breakpoints.scss';
+
 .container {
   height: 506px;
   
@@ -16,6 +18,7 @@
   border-radius: var(--radius);
   transition: color 0.15s ease, border-color 0.15s ease;
 
+  position: relative;
   overflow: hidden;
 }
 
@@ -32,4 +35,23 @@
 .productInfo {
   padding: 1rem 1.5rem 1.5rem;
   border-top: 1px solid var(--n300);
+}
+
+.costLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+}
+
+/* === Desktop styles ======================================================= */
+@include respond-up('desktop') {
+  .costLabel > img {
+    width: 2rem;
+    height: 2rem;
+  }
 }
