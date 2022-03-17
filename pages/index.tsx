@@ -9,7 +9,7 @@ import PointsCounter from '../components/index/PointsCounter';
 import Products from '../components/index/Products';
 import Walkthrough from '../components/index/Walkthrough';
 
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.scss';
 import typeStyles from '../styles/Type.module.scss';
 
 import Product from '../types/Product';

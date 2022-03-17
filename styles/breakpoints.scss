@@ -1,6 +1,7 @@
 $breakpoints-up: (
   'tablet':  600px,
-  'desktop': 1280px
+  'desktop': 1280px,
+  'large': 1600px
 ) !default;
 
 @mixin respond-up($breakpoint) {
@@ -13,7 +14,8 @@ $breakpoints-up: (
 
 $breakpoints-down: (
   'mobile':  599.99px,
-  'tablet': 1279.99px
+  'tablet': 1279.99px,
+  'desktop': 1599.99px
 ) !default;
 
 @mixin respond-down($breakpoint) {

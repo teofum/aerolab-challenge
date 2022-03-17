@@ -1,5 +1,11 @@
+@import './breakpoints.scss';
+
 .container {
-  padding: 0 5rem;
+  padding: 0 1.25rem;
+
+  @include respond-up('desktop') {
+    padding: 0 5rem;
+  }
 }
 
 .container > * {

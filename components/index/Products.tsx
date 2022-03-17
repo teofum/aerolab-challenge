@@ -4,7 +4,7 @@ import cn from "classnames";
 import ProductCard from "./ProductCard";
 import Paginator from "./Paginator";
 
-import styles from '../../styles/Products.module.css';
+import styles from '../../styles/Products.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
 
 import Product from "../../types/Product";
@@ -50,31 +50,32 @@ const Products = ({ products, available, redeem }: ProductsProps) => {
       </h2>
 
       <div className={styles.filters}>
-        <div className={styles.filterSort}>
-          <div className={styles.filter}>
-            <label htmlFor='filter-select'>Filter by:</label>
-            <div className={styles.select}>
-              <select id='filter-select' value={filter} onChange={e => {
-                setFilter((e.nativeEvent.target as HTMLSelectElement).value);
-                setPage(0);
-              }}>
-                <option value=''>All Products</option>
-                {[...categories].map((cat, i) => (
-                  <option key={i} value={cat}>{cat}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <hr className={styles.divider} />
-
-          <div className={styles.sort}>
-            <label htmlFor='sort-radio'>Sort by:</label>
-            <ButtonSelect options={sortOptions} selected={sort} set={setSort}
-              id='sort-radio' />
+        <div className={styles.filter}>
+          <label htmlFor='filter-select'>Filter by:</label>
+          <div className={styles.select}>
+            <select id='filter-select' value={filter} onChange={e => {
+              setFilter((e.nativeEvent.target as HTMLSelectElement).value);
+              setPage(0);
+            }}>
+              <option value=''>All Products</option>
+              {[...categories].map((cat, i) => (
+                <option key={i} value={cat}>{cat}</option>
+              ))}
+            </select>
           </div>
         </div>
-        <Paginator page={page} total={pageCount} set={setPage} />
+
+        <hr className={styles.divider} />
+
+        <div className={styles.sort}>
+          <label htmlFor='sort-radio'>Sort by:</label>
+          <ButtonSelect options={sortOptions} selected={sort} set={setSort}
+            id='sort-radio' />
+        </div>
+
+        <div className={styles.paginatorTop}>
+          <Paginator page={page} total={pageCount} set={setPage} />
+        </div>
       </div>
 
       <div className={styles.grid}>
