@@ -1,0 +1,25 @@
+$breakpoints-up: (
+  'tablet':  600px,
+  'desktop': 1280px
+) !default;
+
+@mixin respond-up($breakpoint) {
+  @if map-has-key($breakpoints-up, $breakpoint) {
+    @media (min-width: map-get($breakpoints-up, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+$breakpoints-down: (
+  'mobile':  599.99px,
+  'tablet': 1279.99px
+) !default;
+
+@mixin respond-down($breakpoint) {
+  @if map-has-key($breakpoints-down, $breakpoint) {
+    @media (max-width: map-get($breakpoints-down, $breakpoint)) {
+      @content;
+    }
+  }
+}

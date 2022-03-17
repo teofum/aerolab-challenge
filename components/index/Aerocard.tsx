@@ -3,7 +3,7 @@ import PointsIcon from './PointsIcon';
 import User from '../../types/User';
 
 import styles from '../../styles/Aerocard.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 
 const Aerocard = ({ user }: { user: User | null}) => {
   return (

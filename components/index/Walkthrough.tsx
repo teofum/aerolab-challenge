@@ -9,7 +9,7 @@ import LoadingAnim from './LoadingAnim';
 import User from '../../types/User';
 
 import styles from '../../styles/Walkthrough.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
 const Walkthrough = () => {

@@ -1,7 +1,7 @@
 import cn from "classnames";
 
 import styles from '../../styles/ButtonSelect.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 
 interface ButtonSelectProps {
   options: { name: string, value: string }[];

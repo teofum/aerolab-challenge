@@ -7,7 +7,7 @@ import Aeropay from './Aeropay';
 import User from '../../types/User';
 
 import styles from '../../styles/PointsCounter.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
 interface PointsCounterProps {

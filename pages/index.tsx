@@ -10,7 +10,7 @@ import Products from '../components/index/Products';
 import Walkthrough from '../components/index/Walkthrough';
 
 import styles from '../styles/Home.module.css';
-import typeStyles from '../styles/Type.module.css';
+import typeStyles from '../styles/Type.module.scss';
 
 import Product from '../types/Product';
 import User from '../types/User';

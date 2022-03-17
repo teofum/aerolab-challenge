@@ -2,16 +2,20 @@
 
 @import 'resets.css';
 @import 'theme.css';
+@import './breakpoints.scss';
 
 body {
   padding: 0;
   margin: 0;
 
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.125rem; /* 18px @ default 16px font size */
   font-weight: 600;
   line-height: 1.5;
   color: var(--n900);
+
+  @include respond-up('desktop') {
+    font-size: 1.125rem; /* 18px @ default 16px font size */
+  }
 }
 
 a {

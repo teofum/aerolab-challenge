@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import styles from '../../styles/Hero.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import styles from '../../styles/Hero.module.scss';
+import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
 const Hero = () => {
@@ -15,7 +15,7 @@ const Hero = () => {
         <span className={cn(typeStyles.allCaps, typeStyles.light)}>Explore the</span>
         <h1 className={typeStyles.titleL1}><em>Tech</em> Zone</h1>
         <p className={typeStyles.light}>
-          Here you’ll be able to exchange all of your hard-earned<br />Aeropoints and exchange them for cool tech.
+          Here you’ll be able to redeem all of your hard-earned Aeropoints and exchange them for cool tech.
         </p>
 
         <button className={cn(

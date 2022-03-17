@@ -9,7 +9,7 @@ import LoadingAnim from './LoadingAnim';
 import User from '../../types/User';
 
 import styles from '../../styles/Aeropay.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 import Aerocard from './Aerocard';
 

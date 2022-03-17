@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
 import Paginator from "./Paginator";
 
 import styles from '../../styles/Products.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 
 import Product from "../../types/Product";
 import ButtonSelect from "./ButtonSelect";

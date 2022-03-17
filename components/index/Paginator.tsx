@@ -1,7 +1,7 @@
 import cn from "classnames";
 
 import styles from '../../styles/Paginator.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 
 interface PaginatorProps {
   page: number;

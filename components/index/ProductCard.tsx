@@ -6,7 +6,7 @@ import PointsIcon from './PointsIcon';
 import LoadingAnim from './LoadingAnim';
 
 import styles from '../../styles/ProductCard.module.css';
-import typeStyles from '../../styles/Type.module.css';
+import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.css';
 
 import Product from '../../types/Product';
