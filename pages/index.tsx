@@ -25,12 +25,12 @@ const Home = ({ products }: HomeProps) => {
   useEffect(() => {
     refreshUser();
   }, []);
-  
+
   useEffect(() => {
     const handler = () => {
       const main = document.querySelector('main');
       setSticky((main?.getBoundingClientRect().top || 0) < 100);
-    }; 
+    };
 
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
@@ -89,18 +89,19 @@ const Home = ({ products }: HomeProps) => {
         <link rel="icon" href="/favicon.svg" />
       </Head>
 
-      <header className={cn(
-        styles.header,
+      <div className={cn(
         styles.stickyHeader,
         utilStyles.elevation3,
         { [styles.hidden]: !sticky }
-        )}>
-        <img className={styles.logoMobile}
-          src='/icons/aerolab-logo-2.svg' width={48} height={48} />
-        <img className={styles.logoDesktop}
-          src='/icons/aerolab-logo-1.svg' width={126} height={48} />
-        <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
-      </header>
+      )}>
+        <header className={styles.header}>
+          <img className={styles.logoMobile}
+            src='/icons/aerolab-logo-2.svg' width={48} height={48} />
+          <img className={styles.logoDesktop}
+            src='/icons/aerolab-logo-1.svg' width={126} height={48} />
+          <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
+        </header>
+      </div>
 
       <header className={styles.header}>
         <img className={styles.logoMobile}
