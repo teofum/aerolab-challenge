@@ -33,6 +33,7 @@ button.bigCta:active > svg {
 }
 
 .illustration {
+  pointer-events: none;
   display: none; /* Hidden by default on mobile/tablet */
 }
 

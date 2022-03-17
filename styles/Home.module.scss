@@ -17,6 +17,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  /* Prevents Aeropay component from being covered by
+   * absolute-positioned hero image */
+  position: relative;
+  z-index: 10;
 }
 
 .stickyHeader {
@@ -45,6 +50,10 @@
 
 .stickyHeader.hidden {
   transform: translateY(-150%);
+}
+
+.stickyHeader.hidden div[class*="aeropay"] {
+  display: none;
 }
 
 .footer {
