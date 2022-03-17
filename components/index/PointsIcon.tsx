@@ -1,4 +1,4 @@
-import styles from '../../styles/PointsIcon.module.css';
+import styles from '../../styles/PointsIcon.module.scss';
 
 const PointsIcon = () => {
   return (

@@ -1,6 +1,6 @@
 import cn from "classnames";
 
-import styles from '../../styles/Paginator.module.css';
+import styles from '../../styles/Paginator.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
 
 interface PaginatorProps {

@@ -96,11 +96,8 @@ const Home = ({ products }: HomeProps) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          View repository on&nbsp;
-          <span className={styles.logo}>
-            {/* TODO change logo to github */}
-            <Image src="/vercel.svg" alt="Vercel Logo" width={24} height={24} />
-          </span>
+          View this repository on&nbsp;
+          <img className={styles.logo} src='/icons/github-default.svg' />
         </a>
       </footer>
     </div>

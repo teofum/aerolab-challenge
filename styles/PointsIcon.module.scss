@@ -1,0 +1,10 @@
+@import './breakpoints.scss';
+
+svg.icon {
+  fill: currentColor;
+
+  @include respond-down('tablet-lg') {
+    width: 20px;
+    height: 20px;
+  }
+}
