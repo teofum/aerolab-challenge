@@ -40,3 +40,22 @@
   background: var(--brand-g);
   opacity: 50%;
 }
+
+button.bigCta {
+  margin-top: 4rem;
+  padding: 1.5rem 2.5rem;
+  text-transform: uppercase;
+}
+
+button.bigCta > svg {
+  fill: currentColor;
+  transition: transform 150ms ease-out;
+}
+
+button.bigCta:hover > svg {
+  transform: translateY(-25%);
+}
+
+button.bigCta:active > svg {
+  transform: translateY(50%);
+}
