@@ -10,7 +10,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   column-gap: 1.5rem;
   row-gap: 3rem;
   place-items: stretch;
@@ -68,6 +68,17 @@ hr.divider {
   gap: 1.5rem;
 }
 
+/* === Mobile styles ======================================================== */
+@include respond-down('mobile') {
+  .sort {
+    margin: 0 -1.25rem;
+  }
+
+  .sort > div {
+    padding: 0 1.25rem;
+  }
+}
+
 /* === Tablet/small desktop styles ========================================== */
 @include respond-up('tablet') {
   .filters {
@@ -87,6 +98,7 @@ hr.divider {
 /* === Desktop styles ======================================================= */
 @include respond-up('desktop') {
   .grid {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     column-gap: 1.25rem;
     row-gap: 5rem;
   }
