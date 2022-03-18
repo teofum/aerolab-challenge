@@ -42,24 +42,14 @@ const ProductCard = ({ product, user, redeem }: ProductCardProps) => {
       const x = absX / rect.width * 2 - 1;
       const y = absY / rect.height * 2 - 1;
 
-      console.log(x.toFixed(4), y.toFixed(4));
-
       c.style.setProperty('--x', `${y * -4}deg`);
       c.style.setProperty('--y', `${x * 4}deg`);
     };
 
-    const leaveHandler = (ev: MouseEvent) => {
-      c.style.removeProperty('--x');
-      c.style.removeProperty('--y');
-      console.log('leave', ev.target);
-    };
-
     c.addEventListener('mousemove', mouseHandler);
-    //c.addEventListener('mouseleave', leaveHandler);
 
     return () => {
       c?.removeEventListener('mousemove', mouseHandler);
-      c?.removeEventListener('mouseleave', leaveHandler);
     };
   }, [])
 
