@@ -10,21 +10,22 @@ import typeStyles from '../../styles/Type.module.scss';
 import utilStyles from '../../styles/Utils.module.scss';
 
 import Product from '../../types/Product';
+import User from '../../types/User';
 
 interface ProductCardProps {
   product: Product,
-  available?: number,
+  user: User | null,
   redeem: (product: Product) => void
 }
 
-const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
-  const canAfford = product.cost <= (available || 0);
-  const loading = available === undefined;
+const ProductCard = ({ product, user, redeem }: ProductCardProps) => {
+  const canAfford = product.cost <= (user?.points || 0);
+  const loading = user?.points === undefined;
 
   const [redeeming, setRedeeming] = useState(false);
   useEffect(() => {
     setRedeeming(false);
-  }, [available]);
+  }, [user]);
 
   return (
     <div className={styles.container}>
@@ -68,7 +69,7 @@ const ProductCard = ({ product, available, redeem }: ProductCardProps) => {
           {!redeeming && <span>{canAfford ? 'Redeem for' : 'You need'}</span>}
           {!redeeming && <PointsIcon />}
           {!redeeming && <span>{
-            (canAfford ? product.cost : product.cost - available)
+            (canAfford ? product.cost : product.cost - user.points)
               .toLocaleString('en-US')
           }</span>}
           {redeeming && <LoadingAnim />}

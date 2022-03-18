@@ -10,9 +10,11 @@ import typeStyles from '../../styles/Type.module.scss';
 import Product from "../../types/Product";
 import ButtonSelect from "./ButtonSelect";
 
+import User from "../../types/User";
+
 interface ProductsProps {
   products: Product[],
-  available?: number,
+  user: User | null,
   redeem: (product: Product) => void
 }
 
@@ -24,7 +26,7 @@ const sortFunctions: { [key: string]: (a: Product, b: Product) => number } = {
   high: (a, b) => b.cost - a.cost
 }
 
-const Products = ({ products, available, redeem }: ProductsProps) => {
+const Products = ({ products, user, redeem }: ProductsProps) => {
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('recent');
@@ -84,7 +86,7 @@ const Products = ({ products, available, redeem }: ProductsProps) => {
           .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
           .map(product => (
             <ProductCard key={product._id}
-              product={product} available={available} redeem={redeem} />
+              product={product} user={user} redeem={redeem} />
           ))}
       </div>
 

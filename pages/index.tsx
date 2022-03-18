@@ -185,7 +185,7 @@ const Home = ({ products }: HomeProps) => {
       <Hero />
       <Walkthrough />
 
-      <Products products={products} available={user?.points} redeem={redeemProduct} />
+      <Products products={products} user={user} redeem={redeemProduct} />
 
       <footer className={cn(styles.footer, typeStyles.light)}>
         <a href="https://github.com/teofum/aerolab-challenge"
