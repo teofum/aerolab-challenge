@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cn from "classnames";
 
 import ProductCard from "./ProductCard";
@@ -18,8 +18,6 @@ interface ProductsProps {
   redeem: (product: Product) => void
 }
 
-const PAGE_SIZE = 16;
-
 const sortFunctions: { [key: string]: (a: Product, b: Product) => number } = {
   recent: (a, b) => 0, /* There's no date in the API model, assume already sorted */
   low: (a, b) => a.cost - b.cost,
@@ -27,9 +25,16 @@ const sortFunctions: { [key: string]: (a: Product, b: Product) => number } = {
 }
 
 const Products = ({ products, user, redeem }: ProductsProps) => {
+  const [pageSize, setPageSize] = useState(12);
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState('');
   const [sort, setSort] = useState('recent');
+
+  useEffect(() => {
+    const vw = window?.innerWidth;
+    if (vw && vw >= 1600) setPageSize(16);
+    else if (vw && vw < 900) setPageSize(8);
+  }, []);
 
   const categories = new Set<string>(products
     .map(product => product.category));
@@ -43,7 +48,8 @@ const Products = ({ products, user, redeem }: ProductsProps) => {
   const filtered = products
     .filter(product => !filter || product.category === filter);
 
-  const pageCount = Math.ceil(filtered.length / PAGE_SIZE);
+
+  const pageCount = Math.ceil(filtered.length / pageSize);
 
   return (
     <main className={styles.main}>
@@ -83,7 +89,7 @@ const Products = ({ products, user, redeem }: ProductsProps) => {
       <div className={styles.grid}>
         {filtered
           .sort(sortFunctions[sort])
-          .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
+          .slice(page * pageSize, (page + 1) * pageSize)
           .map(product => (
             <ProductCard key={product._id}
               product={product} user={user} redeem={redeem} />
@@ -92,7 +98,7 @@ const Products = ({ products, user, redeem }: ProductsProps) => {
 
       <div className={styles.pagination}>
         <div className={cn(styles.pageSize, typeStyles.light, typeStyles.em)}>
-          <em>{Math.min(PAGE_SIZE, filtered.length)} of {filtered.length}</em> products
+          <em>{Math.min(pageSize, filtered.length)} of {filtered.length}</em> products
         </div>
         <Paginator page={page} total={pageCount} set={setPage} />
       </div>
