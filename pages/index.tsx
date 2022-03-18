@@ -1,16 +1,18 @@
-import cn from 'classnames';
+import { useEffect, useState } from 'react';
 import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import cn from 'classnames';
+import toast, { Toaster } from 'react-hot-toast';
 
 import Hero from '../components/index/Hero';
 import PointsCounter from '../components/index/PointsCounter';
 import Products from '../components/index/Products';
+import ToastTemplate from '../components/index/ToastTemplate';
 import Walkthrough from '../components/index/Walkthrough';
 
 import styles from '../styles/Home.module.scss';
 import typeStyles from '../styles/Type.module.scss';
-import utilStyles from '../styles/Utils.module.css';
+import utilStyles from '../styles/Utils.module.scss';
 
 import Product from '../types/Product';
 import User from '../types/User';
@@ -38,13 +40,25 @@ const Home = ({ products }: HomeProps) => {
 
   /* User data needs to be fetched client-side, since points amount can change */
   const refreshUser = async () => {
-    const resUser = await fetch('https://coding-challenge-api.aerolab.co/user/me', {
+    const res = await fetch('https://coding-challenge-api.aerolab.co/user/me', {
       method: 'GET',
       headers: {
         Authorization: auth
       }
     });
-    const user: User = await resUser.json();
+
+    if (!res.ok) {
+      toast.error(t => (
+        <ToastTemplate toastRef={t}>
+          <span className={typeStyles.light}>There was a problem fetching user data</span>
+        </ToastTemplate>
+      ), {
+        className: cn(utilStyles.toast, utilStyles.error),
+        duration: 10000
+      });
+    }
+
+    const user: User = await res.json();
 
     if (user) setUser(user);
   };
@@ -52,7 +66,7 @@ const Home = ({ products }: HomeProps) => {
   const addPoints = async (amt: number) => {
     setLoadingPoints(true);
 
-    await fetch('https://coding-challenge-api.aerolab.co/user/points', {
+    const res = await fetch('https://coding-challenge-api.aerolab.co/user/points', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,12 +77,32 @@ const Home = ({ products }: HomeProps) => {
       })
     });
 
+    if (!res.ok) {
+      toast.error(t => (
+        <ToastTemplate toastRef={t}>
+          <span className={typeStyles.light}>There was a problem with the transaction</span>
+        </ToastTemplate>
+      ), {
+        className: cn(utilStyles.toast, utilStyles.error),
+        duration: 10000
+      });
+    } else {
+      toast.success(t => (
+        <ToastTemplate toastRef={t}>
+          {amt} points <span className={typeStyles.light}>added&nbsp;succesfully</span>
+        </ToastTemplate>
+      ), {
+        className: cn(utilStyles.toast, utilStyles.success),
+        duration: 10000
+      });
+    }
+
     setLoadingPoints(false);
     refreshUser();
   };
 
   const redeemProduct = async (product: Product) => {
-    await fetch('https://coding-challenge-api.aerolab.co/redeem', {
+    const res = await fetch('https://coding-challenge-api.aerolab.co/redeem', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -79,6 +113,26 @@ const Home = ({ products }: HomeProps) => {
       })
     });
 
+    if (!res.ok) {
+      toast.error(t => (
+        <ToastTemplate toastRef={t}>
+          <span className={typeStyles.light}>There was a problem with the transaction</span>
+        </ToastTemplate>
+      ), {
+        className: cn(utilStyles.toast, utilStyles.error),
+        duration: 10000
+      });
+    } else {
+      toast.success(t => (
+        <ToastTemplate toastRef={t}>
+          {product.name} <span className={typeStyles.light}>redeemed&nbsp;succesfully</span>
+        </ToastTemplate>
+      ), {
+        className: cn(utilStyles.toast, utilStyles.success),
+        duration: 10000
+      });
+    }
+
     refreshUser();
   };
 
@@ -88,6 +142,21 @@ const Home = ({ products }: HomeProps) => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.svg" />
       </Head>
+
+      <Toaster position='bottom-left' toastOptions={{
+        success: {
+          iconTheme: {
+            primary: 'var(--green)',
+            secondary: 'white'
+          }
+        },
+        error: {
+          iconTheme: {
+            primary: 'var(--red)',
+            secondary: 'white'
+          }
+        }
+      }} />
 
       <div className={cn(
         styles.stickyHeader,

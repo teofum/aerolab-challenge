@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import styles from '../../styles/Hero.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
-import utilStyles from '../../styles/Utils.module.css';
+import utilStyles from '../../styles/Utils.module.scss';
 
 const Hero = () => {
   const scrollDown = () => {

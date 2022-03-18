@@ -26,6 +26,12 @@
   --illus-end: #eac0e9;
   --illus-g: linear-gradient(110deg, var(--illus), var(--illus-end));
 
+  /* Green/Red */
+  --green: #29cc74;
+  --green-light: #ccffe3;
+  --red: #e07f4f;
+  --red-light: #ffdfd9;
+
   /* == Other theme variables =============================================== */
   --radius-xl: 2rem;
   --radius-lg: 1.5rem;

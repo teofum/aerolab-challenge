@@ -7,7 +7,7 @@ import LoadingAnim from './LoadingAnim';
 
 import styles from '../../styles/ProductCard.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
-import utilStyles from '../../styles/Utils.module.css';
+import utilStyles from '../../styles/Utils.module.scss';
 
 import Product from '../../types/Product';
 

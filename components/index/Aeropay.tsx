@@ -10,7 +10,7 @@ import User from '../../types/User';
 
 import styles from '../../styles/Aeropay.module.css';
 import typeStyles from '../../styles/Type.module.scss';
-import utilStyles from '../../styles/Utils.module.css';
+import utilStyles from '../../styles/Utils.module.scss';
 import Aerocard from './Aerocard';
 
 interface AeropayProps {

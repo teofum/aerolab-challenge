@@ -8,7 +8,7 @@ import User from '../../types/User';
 
 import styles from '../../styles/PointsCounter.module.scss';
 import typeStyles from '../../styles/Type.module.scss';
-import utilStyles from '../../styles/Utils.module.css';
+import utilStyles from '../../styles/Utils.module.scss';
 
 interface PointsCounterProps {
   user: User | null;

@@ -1,3 +1,5 @@
+@import './breakpoints.scss';
+
 .elevation1 {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
 }
@@ -17,6 +19,56 @@
 
 .elevation3 {
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.12);
+}
+
+div.toast {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--n300);
+
+  max-width: min(600px, calc(100vw - 2rem));
+  padding: 1rem;
+
+  @include respond-up('tablet-lg') {
+    padding: 1.5rem;
+  }
+}
+
+div.toast.success {
+  border-color: var(--green);
+}
+
+div.toast.error {
+  border-color: var(--red);
+}
+
+.toastContent {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+
+  padding-left: 0.5rem;
+}
+
+button.toastClose {
+  padding: 0;
+  display: grid;
+
+  background: none;
+  color: var(--n500);
+  border: none;
+
+  transition: color 150ms ease-out, transform 150ms ease-out;
+  cursor: pointer;
+}
+
+button.toastClose:active {
+  color: var(--n600);
+}
+
+button.toastClose > svg {
+  stroke: currentColor;
 }
 
 button.cta {
