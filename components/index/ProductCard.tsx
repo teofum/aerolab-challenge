@@ -21,15 +21,52 @@ interface ProductCardProps {
 const ProductCard = ({ product, user, redeem }: ProductCardProps) => {
   const canAfford = product.cost <= (user?.points || 0);
   const loading = user?.points === undefined;
+  let card: HTMLElement | null = null;
 
   const [redeeming, setRedeeming] = useState(false);
   useEffect(() => {
     setRedeeming(false);
   }, [user]);
 
+  /* Fancy 3D mouse-follow effect. Probably wouldn't do something this
+   * over the top in a real app, I'm just showing off a bit. */
+  useEffect(() => {
+    if (!card) return;
+
+    const c = card;
+    const mouseHandler = (ev: MouseEvent) => {
+      const rect = c.getBoundingClientRect();
+      const absX = ev.clientX - rect.left;
+      const absY = ev.clientY - rect.top;
+
+      const x = absX / rect.width * 2 - 1;
+      const y = absY / rect.height * 2 - 1;
+
+      console.log(x.toFixed(4), y.toFixed(4));
+
+      c.style.setProperty('--x', `${y * -4}deg`);
+      c.style.setProperty('--y', `${x * 4}deg`);
+    };
+
+    const leaveHandler = (ev: MouseEvent) => {
+      c.style.removeProperty('--x');
+      c.style.removeProperty('--y');
+      console.log('leave', ev.target);
+    };
+
+    c.addEventListener('mousemove', mouseHandler);
+    //c.addEventListener('mouseleave', leaveHandler);
+
+    return () => {
+      c?.removeEventListener('mousemove', mouseHandler);
+      c?.removeEventListener('mouseleave', leaveHandler);
+    };
+  }, [])
+
   return (
     <div className={styles.container}>
-      <div className={cn(styles.card, utilStyles.elevation1)}>
+      <div className={cn(styles.card, utilStyles.elevation1)}
+        ref={el => card = el}>
         <div className={styles.productImage}>
 
           <Image src='/icons/placeholder.svg' width={96} height={96} alt={product.name} />

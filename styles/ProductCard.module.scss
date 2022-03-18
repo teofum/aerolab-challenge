@@ -16,7 +16,7 @@
 
   border: 1px solid var(--n300);
   border-radius: var(--radius);
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: transform 150ms ease;
 
   position: relative;
   overflow: hidden;
@@ -33,7 +33,7 @@
 }
 
 .productInfo {
-  padding: 1rem 1.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-top: 1px solid var(--n300);
 }
 
@@ -50,6 +50,21 @@
 
 /* === Desktop styles ======================================================= */
 @include respond-up('desktop') {
+  .container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .card {
+    transform: translateZ(0);
+    --x: 0;
+    --y: 0;
+  }
+
+  .card:hover {
+    transform: translateZ(25px) rotateX(var(--x)) rotateY(var(--y));
+  }
+
   .costLabel > img {
     width: 2rem;
     height: 2rem;
