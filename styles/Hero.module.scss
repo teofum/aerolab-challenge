@@ -94,6 +94,7 @@ button.bigCta::after {
     display: grid;
     grid-template-columns: 4fr 5fr;
     gap: 8rem;
+    padding-top: 0rem;
 
     text-align: left;
   }
@@ -103,7 +104,7 @@ button.bigCta::after {
   }
 
   .title > button.bigCta {
-    margin: 4rem 0 0;
+    margin: 1rem 0 0;
     padding: 1.5rem 2.5rem;
   }
 
@@ -147,5 +148,9 @@ button.bigCta::after {
 @include respond-up('large') {
   .main {
     padding-top: 5rem;
+  }
+
+  .title > button.bigCta {
+    margin: 4rem 0 0;
   }
 }

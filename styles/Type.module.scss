@@ -78,7 +78,9 @@
 
 @include respond-up('desktop') {
   .titleL1 {
-    font-size: 12.5rem; /* 200px @ default 16px font size */
+    /* Doesn't match desktop spec (200px), but helps make the CTA
+     * visible on smaller screens */
+    font-size: 11rem; /* 176px @ default 16px font size */
   }
 
   .titleL2 {
@@ -95,5 +97,13 @@
 
   .textL2.allCaps {
     letter-spacing: 0.05em;
+  }
+}
+
+/* === Large desktop styles ================================================= */
+
+@include respond-up('desktop') {
+  .titleL1 {
+    font-size: 12.5rem; /* 200px @ default 16px font size */
   }
 }
