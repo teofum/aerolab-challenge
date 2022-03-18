@@ -111,6 +111,8 @@ const Home = ({ products }: HomeProps) => {
         <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
       </header>
 
+      <div className={styles.waves} />
+
       <Hero />
       <Walkthrough />
 

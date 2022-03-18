@@ -2,6 +2,7 @@
 
 .container {
   padding: 0 1.25rem;
+  position: relative;
 }
 
 .container > * {
@@ -82,6 +83,22 @@ img.logo {
   display: none;
 }
 
+.waves {
+  position: absolute;
+  top: 135px;
+  height: 1200px;
+  left: calc(50% - 50vw / 1.5);
+  width: calc(100vw / 1.5);
+  transform: scaleX(1.5);
+
+  background-image:
+    linear-gradient(to bottom, transparent 80%, var(--n0)),
+    url('/illustrations/single-wave-pattern.svg');
+  background-size: 100% 100%, 350px 18px;
+
+  z-index: -2;
+}
+
 /* === Desktop styles ======================================================= */
 @include respond-up('desktop') {
   .container {
@@ -98,5 +115,12 @@ img.logo {
 
   .stickyHeader {
     padding: 1.5rem 5rem;
+  }
+}
+
+/* === Large desktop styles ================================================= */
+@include respond-up('large') {
+  .waves {
+    top: 180px;
   }
 }
