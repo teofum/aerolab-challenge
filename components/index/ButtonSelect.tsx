@@ -15,7 +15,7 @@ const ButtonSelect = ({ options, selected, set, id, small }: ButtonSelectProps) 
   return (
     <div id={id} className={cn(styles.main, { [styles.small]: small })}>
       {options.map((opt, i) => (
-        <button key={i}
+        <button key={i} name={`${id}-${i}`}
           className={cn(
             styles.option,
             {

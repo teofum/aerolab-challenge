@@ -27,11 +27,11 @@ const PointsCounter = ({ user, addPoints, loading }: PointsCounterProps) => {
       { [utilStyles.active]: expanded }
     )}>
       <span className={cn(styles.counter, typeStyles.em)}>
-        <img src='/icons/aeropay-1.svg' />
+        <img src='/icons/aeropay-1.svg' alt='Points' />
         <em>{user?.points.toLocaleString('en-US') || 0}</em>
       </span>
 
-      <button className={cn(styles.expand, { [styles.expanded]: expanded })}
+      <button name='expand-points' className={cn(styles.expand, { [styles.expanded]: expanded })}
         onClick={() => setExpanded(!expanded)}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M4.5 9L12 16.5L19.5 9" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="bevel" />

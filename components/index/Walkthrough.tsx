@@ -46,7 +46,7 @@ const Walkthrough = () => {
     <div className={styles.main}>
       {/* Manually optimized some images, Next's Image component adds elements
         * that make them harder to work with */}
-      <img className={styles.illustration}
+      <img className={styles.illustration} alt='Hero'
         src='/illustrations/hero-responsive.webp'
         srcSet='/illustrations/hero-responsive.webp 1x, /illustrations/hero-desktop.webp 2x' />
 
@@ -61,12 +61,12 @@ const Walkthrough = () => {
           ref={el => { if (i === 1) card = el; }}>
           <div className={styles.cardTop}>
             <Image src={`/illustrations/wt-${i + 1}-desktop.png`}
-              width={508} height={498} />
+              alt={cardTitles[i]} width={508} height={498} />
           </div>
 
           <div className={styles.cardBottom}>
             <div className={styles.cardIcon}>
-              <img src={`/icons/wt-${i + 1}.svg`} />
+              <img src={`/icons/wt-${i + 1}.svg`} alt='Icon' />
             </div>
             <span className={typeStyles.titleL3}><em>{cardTitles[i]}</em></span>
 

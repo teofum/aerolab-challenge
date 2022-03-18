@@ -32,12 +32,12 @@ const ProductCard = ({ product, user, redeem }: ProductCardProps) => {
       <div className={cn(styles.card, utilStyles.elevation1)}>
         <div className={styles.productImage}>
 
-          <Image src='/icons/placeholder.svg' width={96} height={96} />
+          <Image src='/icons/placeholder.svg' width={96} height={96} alt={product.name} />
 
           {/* We can ignore the "standard" definition image, since its size
             is smaller than the display size (252 vs 280px) it will -always-
             look blurry. We're better off letting Next optimize for us instead */}
-          <Image src={product.img.hdUrl} width={280} height={204} />
+          <Image src={product.img.hdUrl} width={280} height={204} alt={product.name} />
         </div>
 
         <div className={styles.productInfo}>
@@ -50,14 +50,14 @@ const ProductCard = ({ product, user, redeem }: ProductCardProps) => {
         </div>
 
         <span className={cn(styles.costLabel, typeStyles.em)}>
-          <img src='/icons/aeropay-1.svg' />
+          <img src='/icons/aeropay-1.svg' alt='Points' />
           <em>{product.cost.toLocaleString('en-US')}</em>
         </span>
       </div>
 
       {loading && <div className={utilStyles.ctaSkeleton} />}
       {!loading &&
-        <button className={cn(
+        <button name='redeem' className={cn(
           utilStyles.cta,
           utilStyles.elevation1,
           utilStyles.hv,

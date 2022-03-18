@@ -8,9 +8,12 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap" rel="stylesheet" />
+          <meta name="description" content="Aerolab challenge" />
+          <title>Aerolab TechZone</title>
+          <link rel="icon" href="/favicon.svg" />
         </Head>
         <body>
           <Main />

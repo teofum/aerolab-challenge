@@ -18,7 +18,7 @@ const Hero = () => {
           Here you’ll be able to redeem all of your hard-earned Aeropoints and exchange them for cool tech.
         </p>
 
-        <button className={cn(
+        <button name='cta' className={cn(
           utilStyles.cta,
           styles.bigCta,
           utilStyles.elevation1,
@@ -36,7 +36,7 @@ const Hero = () => {
         <div className={styles.illustrationBg} />
         {/* Manually optimized some images, Next's Image component adds elements
           * that make them harder to work with */}
-        <img src='/illustrations/hero-desktop.webp' width={900} height={900} />
+        <img src='/illustrations/hero-desktop.webp' alt='Hero' width={900} height={900} />
       </div>
     </header>
   );

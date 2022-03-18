@@ -138,11 +138,6 @@ const Home = ({ products }: HomeProps) => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
-
       <Toaster position='bottom-left' toastOptions={{
         success: {
           iconTheme: {
@@ -164,18 +159,18 @@ const Home = ({ products }: HomeProps) => {
         { [styles.hidden]: !sticky }
       )}>
         <header className={styles.header}>
-          <img className={styles.logoMobile}
+          <img className={styles.logoMobile} alt='Logo'
             src='/icons/aerolab-logo-2.svg' width={48} height={48} />
-          <img className={styles.logoDesktop}
+          <img className={styles.logoDesktop} alt='Logo'
             src='/icons/aerolab-logo-1.svg' width={126} height={48} />
           <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
         </header>
       </div>
 
       <header className={styles.header}>
-        <img className={styles.logoMobile}
+        <img className={styles.logoMobile} alt='Logo'
           src='/icons/aerolab-logo-2.svg' width={48} height={48} />
-        <img className={styles.logoDesktop}
+        <img className={styles.logoDesktop} alt='Logo'
           src='/icons/aerolab-logo-1.svg' width={126} height={48} />
         <PointsCounter user={user} addPoints={addPoints} loading={loadingPoints} />
       </header>
@@ -193,7 +188,7 @@ const Home = ({ products }: HomeProps) => {
           rel="noopener noreferrer"
         >
           View this repository on&nbsp;
-          <img className={styles.logo} src='/icons/github-default.svg' />
+          <img className={styles.logo} src='/icons/github-default.svg' alt='GitHub' />
         </a>
       </footer>
     </div>
