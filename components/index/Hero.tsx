@@ -18,7 +18,7 @@ const Hero = () => {
           Here you’ll be able to redeem all of your hard-earned Aeropoints and exchange them for cool tech.
         </p>
 
-        <button name='cta' className={cn(
+        <button className={cn(
           utilStyles.cta,
           styles.bigCta,
           utilStyles.elevation1,

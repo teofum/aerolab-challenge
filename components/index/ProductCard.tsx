@@ -57,7 +57,7 @@ const ProductCard = ({ product, user, redeem }: ProductCardProps) => {
 
       {loading && <div className={utilStyles.ctaSkeleton} />}
       {!loading &&
-        <button name='redeem' className={cn(
+        <button className={cn(
           utilStyles.cta,
           utilStyles.elevation1,
           utilStyles.hv,
