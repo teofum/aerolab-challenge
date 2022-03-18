@@ -34,7 +34,9 @@ const Hero = () => {
 
       <div className={styles.illustration}>
         <div className={styles.illustrationBg} />
-        <img src='/illustrations/hero-desktop.png' width={900} height={900} />
+        {/* Manually optimized some images, Next's Image component adds elements
+          * that make them harder to work with */}
+        <img src='/illustrations/hero-desktop.webp' width={900} height={900} />
       </div>
     </header>
   );

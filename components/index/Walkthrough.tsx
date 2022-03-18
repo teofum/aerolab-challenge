@@ -44,9 +44,11 @@ const Walkthrough = () => {
 
   return (
     <div className={styles.main}>
+      {/* Manually optimized some images, Next's Image component adds elements
+        * that make them harder to work with */}
       <img className={styles.illustration}
-        src='/illustrations/hero-responsive.png'
-        srcSet='/illustrations/hero-responsive.png 1x, /illustrations/hero-desktop.png 2x' />
+        src='/illustrations/hero-responsive.webp'
+        srcSet='/illustrations/hero-responsive.webp 1x, /illustrations/hero-desktop.webp 2x' />
 
       {[0, 1, 2].map(i => (
         <div key={i}
